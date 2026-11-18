@@ -1,26 +1,29 @@
-### Louis Rodembourg — AI Engineer
+### Louis Rodembourg — ML Engineer
 
-I build LLM agents that hold up in production: evaluated, guarded and observable, not just demoed.
+I build ML systems I can defend with numbers: strict out-of-sample validation, honest
+baselines, reproducible results, and models that meet a real latency budget.
 
-- **Now:** AI Engineer intern at **OVHcloud** (AI Solutions, Lyon), on a company-wide multi-agent platform. I work on agent memory, human-in-the-loop and guardrails, and I have shipped my own agents on it.
-- **Before:** AI Engineer intern at **Alten Labs R&D** (Toulouse). I built an end-to-end local RAG assistant for aerospace production lines (LangChain, ChromaDB, local LLMs) and evaluated it against a hand-built test set of real cases.
+- **Now:** AI Engineer intern at **OVHcloud** (AI Solutions, Lyon).
+- **Before:** AI Engineer intern at **Alten Labs R&D** (Toulouse). I built an end-to-end local RAG assistant for aerospace production lines and evaluated it against a hand-built test set of real cases.
 - **Education:** final-year engineering degree in Data Science & AI at **UTC Compiègne** (graduating Feb. 2027), Erasmus semester at the University of Parma.
 
-#### LLM agents
+#### Selected projects
 
-| Project | What it shows |
-|---|---|
-| [**Signal IA**](https://github.com/louisrodembourg/Newsletter-AI) | An autonomous agent that researches, fact-checks and writes a daily newsletter with no human in the loop: **67 editions in a row**. Its editorial rules are enforced by a blocking quality gate, tested in CI, and its memory is rebuilt from what it has actually published |
+**[aerotrack](https://github.com/louisrodembourg/aerotrack): real-time detection and tracking on drone video.**
+- Runs at **145 FPS end to end on a T4**. A C++/CUDA + TensorRT runtime is **3.5× faster** than the Python pipeline at the same tracking accuracy (HOTA 46.8 vs 46.7).
+- Every optimisation is measured as an accuracy/latency trade-off: fine-tuning (mAP 4.1 → 19.1), input resolution, tiling, INT8.
+- Transfer is tested on an unseen dataset, and every number comes from a tracked run.
 
-#### Machine learning, measured
+**[Adaptive digital twin](https://github.com/louisrodembourg/Adaptive-digital-twin-endurance): personalised models of how athletes respond to training load.**
+- Validated out of sample on **61 athletes**, with time-ordered folds: the effect replicates for 23 of them (sign test p = 0.020).
+- A Bayesian hierarchical model (PyMC) quantifies how individual the response is, and the model says when it cannot tell.
 
-| Project | What it shows |
-|---|---|
-| [**aerotrack**](https://github.com/louisrodembourg/aerotrack) | Drone-video detection + tracking at **145 FPS on a T4**, end to end. YOLO fine-tuning, ByteTrack, TensorRT, a C++/CUDA runtime that is 3.5× faster than the Python pipeline at equal accuracy |
-| [**Adaptive digital twin**](https://github.com/louisrodembourg/Adaptive-digital-twin-endurance) | Models how each athlete responds to training load, validated out of sample on **61 athletes**, with Bayesian hierarchical models, and plans the next week of training |
-| [**Maritime nowcasting**](https://github.com/louisrodembourg/Nowcasting) | Raw AIS ship positions → port congestion → signals on shipping equities, **out-of-sample IC 0.08–0.12** |
-| [**QRT football prediction**](https://github.com/louisrodembourg/qrt-football-prediction) | Top-of-leaderboard accuracy, and the analysis showing why further leaderboard gains would be noise |
+**[Maritime nowcasting](https://github.com/louisrodembourg/Nowcasting): from raw AIS ship positions to market signals.**
+- Port congestion is measured daily with HDBSCAN over about 2,800 days of vessel data.
+- It forecasts shipping-equity returns strictly out of sample (**IC 0.08–0.12**, p < 0.05), and a negative control behaves as expected.
 
-**Stack:** Python, LLM agents (tool use, memory, guardrails, evaluation), RAG, LangChain, PyTorch, TensorRT / ONNX, C++ / CUDA, FastAPI, Docker, SQL
+Also: [QRT football prediction](https://github.com/louisrodembourg/qrt-football-prediction): top-of-leaderboard accuracy, and an adversarial-validation analysis showing why further leaderboard gains would be noise.
+
+**Stack:** Python, PyTorch, scikit-learn, XGBoost / LightGBM, PyMC, Ultralytics YOLO, TensorRT / ONNX, C++ / CUDA, SQL, Docker, pytest + CI
 
 Lyon, France · French, English, German (intermediate)
